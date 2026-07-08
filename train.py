@@ -17,3 +17,7 @@ if __name__ == "__main__":
 from utils import label2id
 
 print("Number of labels:", len(label2id))
+
+from dataset import MCQDataset
+
+print("MCQ Dataset initialized.")

@@ -37,3 +37,22 @@ def map_at_3(actual_labels, predicted_labels):
         scores.append(average_precision_at_3(actual, predicted))
 
     return sum(scores) / len(scores)
+
+
+from sklearn.model_selection import train_test_split
+
+OPTIONS = ["A", "B", "C", "D", "E"]
+
+label2id = {label: idx for idx, label in enumerate(OPTIONS)}
+id2label = {idx: label for label, idx in label2id.items()}
+
+
+def split_dataset(df):
+    train_df, val_df = train_test_split(
+        df,
+        test_size=0.15,
+        random_state=42,
+        stratify=df["answer"]
+    )
+
+    return train_df.reset_index(drop=True), val_df.reset_index(drop=True)

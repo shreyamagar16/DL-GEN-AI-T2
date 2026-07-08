@@ -13,3 +13,7 @@ def load_dataset(path):
 
 if __name__ == "__main__":
     print("Dataset utilities ready.")
+
+from utils import split_dataset
+
+print("Dataset splitting ready.")

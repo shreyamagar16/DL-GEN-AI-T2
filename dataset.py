@@ -37,3 +37,17 @@ class MCQDataset(Dataset):
             return self.inputs[idx]
 
         return self.inputs[idx], self.labels[idx]
+    
+def prepare_inputs(tokenizer, prompt, choices):
+
+    text = [
+        f"{prompt} [SEP] {choice}"
+        for choice in choices
+    ]
+
+    return tokenizer(
+        text,
+        padding=True,
+        truncation=True,
+        max_length=256
+    )

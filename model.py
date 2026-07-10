@@ -8,3 +8,12 @@ def load_tokenizer():
     )
 
     return tokenizer
+
+from transformers import AutoModelForMultipleChoice
+
+
+def load_model():
+
+    return AutoModelForMultipleChoice.from_pretrained(
+        "microsoft/deberta-v3-base"
+    )

@@ -21,3 +21,9 @@ print("Number of labels:", len(label2id))
 from dataset import MCQDataset
 
 print("MCQ Dataset initialized.")
+
+from model import load_tokenizer
+
+tokenizer = load_tokenizer()
+
+print("Tokenizer loaded.")

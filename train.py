@@ -36,3 +36,19 @@ def freeze_backbone(model):
 def unfreeze_backbone(model):
     for param in model.deberta.parameters():
         param.requires_grad = True
+
+for epoch in range(epochs):
+
+    model.train()
+
+    for batch in train_loader:
+
+        optimizer.zero_grad()
+
+        outputs = model(**batch)
+
+        loss = outputs.loss
+
+        loss.backward()
+
+        optimizer.step()

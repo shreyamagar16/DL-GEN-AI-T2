@@ -52,3 +52,13 @@ for epoch in range(epochs):
         loss.backward()
 
         optimizer.step()
+
+import wandb
+
+wandb.init(
+    project="smart-mcq-solver"
+)
+
+wandb.log({
+    "loss": loss.item()
+})

@@ -27,3 +27,12 @@ from model import load_tokenizer
 tokenizer = load_tokenizer()
 
 print("Tokenizer loaded.")
+
+def freeze_backbone(model):
+    for param in model.deberta.parameters():
+        param.requires_grad = False
+
+
+def unfreeze_backbone(model):
+    for param in model.deberta.parameters():
+        param.requires_grad = True

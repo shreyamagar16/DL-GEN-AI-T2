@@ -28,14 +28,16 @@ tokenizer = load_tokenizer()
 
 print("Tokenizer loaded.")
 
-def freeze_backbone(model):
-    for param in model.deberta.parameters():
-        param.requires_grad = False
+# def freeze_backbone(model):
+#     for param in model.deberta.parameters():
+#         param.requires_grad = False
 
 
-def unfreeze_backbone(model):
-    for param in model.deberta.parameters():
-        param.requires_grad = True
+# def unfreeze_backbone(model):
+#     for param in model.deberta.parameters():
+#         param.requires_grad = True
+
+
 
 for epoch in range(epochs):
 
@@ -62,3 +64,13 @@ wandb.init(
 wandb.log({
     "loss": loss.item()
 })
+
+def freeze_backbone(model):
+    for name, p in model.named_parameters():
+        if not name.startswith("classifier") and not name.startswith("pooler"):
+            p.requires_grad = False
+
+
+def unfreeze_backbone(model):
+    for p in model.parameters():
+        p.requires_grad = True

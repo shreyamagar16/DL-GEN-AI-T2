@@ -14,3 +14,16 @@ roberta_model = train_staged(
     roberta_tok,
     "model3-roberta-base-staged"
 )
+
+from inference import generate_submission
+
+generate_submission(
+    test,
+    deberta_model,
+    deberta_tok,
+    roberta_model,
+    roberta_tok,
+    best_weight,
+    get_probs,
+    top3_from_probs,
+)
